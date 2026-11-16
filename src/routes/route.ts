@@ -2,8 +2,6 @@ import type { IncomingMessage, ServerResponse } from "http";
 import productCOntroller from "../controllers/product.controller";
 
 const routerHandler = (req: IncomingMessage, res: ServerResponse) => {
-  console.log("url:", req.url);
-  console.log("url:", req.method);
   const url = req.url;
   const method = req.method;
 
