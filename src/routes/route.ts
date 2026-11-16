@@ -1,4 +1,5 @@
 import type { IncomingMessage, ServerResponse } from "http";
+import productCOntroller from "../controllers/product.controller";
 
 const routerHandler = (req: IncomingMessage, res: ServerResponse) => {
   console.log("url:", req.url);
@@ -10,8 +11,7 @@ const routerHandler = (req: IncomingMessage, res: ServerResponse) => {
     res.writeHead(200, { "content-type": "application/json" });
     res.end(JSON.stringify({ message: "This is root route" }));
   } else if (url?.startsWith("/products")) {
-    res.writeHead(200, { "content-type": "application/json" });
-    res.end(JSON.stringify({ message: "This is products route" }));
+    productCOntroller(req, res);
   } else {
     res.writeHead(404, { "content-type": "application/json" });
     res.end(JSON.stringify({ message: "This is route not found" }));
